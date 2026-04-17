@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Small global helpers — beginners: tweak colors here to see site-wide changes */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply text-[15px] leading-relaxed sm:text-base;
+  }
+  ::selection {
+    background-color: rgba(139, 94, 60, 0.25);
+  }
+  .dark ::selection {
+    background-color: rgba(232, 220, 203, 0.25);
+  }
+  /* Consistent focus rings for keyboard users */
+  :where(a, button, input, textarea, select):focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-brown;
+  }
+  .dark :where(a, button, input, textarea, select):focus-visible {
+    @apply outline-sand;
+  }
+}
+
+@layer components {
+  /** Skip to main content — first focusable for keyboard / screen reader users */
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream shadow-card transition-transform duration-200 focus:translate-y-0 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-cream;
+  }
+}

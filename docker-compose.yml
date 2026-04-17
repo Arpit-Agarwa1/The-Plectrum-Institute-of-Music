@@ -1,0 +1,12 @@
+# Local MongoDB — run: docker compose up -d
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - plectrum_mongo_data:/data/db
+
+volumes:
+  plectrum_mongo_data:
