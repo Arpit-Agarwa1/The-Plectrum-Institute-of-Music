@@ -47,4 +47,24 @@ export const heroBannerImageUrl =
  * Override with VITE_MAP_EMBED_URL in .env for a custom embed.
  */
 export const mapEmbedUrl =
+  import.meta.env.VITE_MAP_EMBED_URL ||
   "https://www.google.com/maps?q=F-226+Jan+Path+Kishan+Nagar+Shyam+Nagar+Jaipur+Rajasthan+302019&hl=en&z=16&output=embed";
+
+/** Same location: open in Google Maps (directions / full place page). */
+export const googleMapsOpenUrl =
+  import.meta.env.VITE_GOOGLE_MAPS_OPEN_URL ||
+  "https://www.google.com/maps/dir/?api=1&destination=" +
+    encodeURIComponent(
+      "F-226, Jan Path, Kishan Nagar, Shyam Nagar, Jaipur, Rajasthan 302019"
+    );
+
+/**
+ * Google Business / Maps reviews — use your Place URL from Google Business Profile for best results.
+ * Fallback opens Maps search at the address (Reviews tab on the listing when available).
+ */
+export const googleReviewsUrl =
+  import.meta.env.VITE_GOOGLE_REVIEWS_URL ||
+  "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(
+      "The Plectrum Institute of Music F-226 Jan Path Kishan Nagar Jaipur 302019"
+    );

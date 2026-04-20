@@ -5,7 +5,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Calendar, MapPin, Phone, Mail } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  MapPin,
+  Phone,
+  Mail,
+  ExternalLink,
+} from "lucide-react";
 import { Container } from "../../components/Container.jsx";
 import { SectionTitle } from "../../components/SectionTitle.jsx";
 import { CourseCard } from "../../components/music/CourseCard.jsx";
@@ -20,6 +27,9 @@ import {
   instituteName,
   tagline,
   heroBannerImageUrl,
+  mapEmbedUrl,
+  googleMapsOpenUrl,
+  googleReviewsUrl,
 } from "../../config/siteInfo.js";
 
 function formatEventDate(iso) {
@@ -121,7 +131,7 @@ export function HomePage() {
                 to="/booking"
                 className="inline-flex items-center gap-2 rounded-full bg-cream px-6 py-3 text-sm font-semibold text-ink shadow-card transition-colors duration-200 hover:bg-sand"
               >
-                Book a trial class
+                Book an appointment
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
               <Link
@@ -273,7 +283,7 @@ export function HomePage() {
           <SectionTitle
             eyebrow="Testimonials"
             title="What students say"
-            subtitle="Feedback from learners and families who study with us."
+            subtitle="Feedback from learners and families — see also verified ratings on Google."
           />
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-3">
             {loading ? (
@@ -284,9 +294,21 @@ export function HomePage() {
                 />
               ))
             ) : testimonials.length === 0 ? (
-              <p className="col-span-full rounded-2xl border border-dashed border-sand/80 bg-cream/80 px-6 py-10 text-center text-sm text-ink/75 dark:border-brown-dark/50 dark:bg-ink/40 dark:text-sand/75">
-                Student stories will show here as reviews come in.
-              </p>
+              <div className="col-span-full rounded-2xl border border-dashed border-sand/80 bg-cream/80 px-6 py-10 text-center dark:border-brown-dark/50 dark:bg-ink/40">
+                <p className="text-sm text-ink/75 dark:text-sand/75">
+                  More student stories will appear here soon. See verified reviews
+                  on Google anytime.
+                </p>
+                <a
+                  href={googleReviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-brown px-5 py-2.5 text-sm font-semibold text-cream transition hover:bg-brown-dark"
+                >
+                  View Google reviews
+                  <ExternalLink className="h-4 w-4" aria-hidden />
+                </a>
+              </div>
             ) : (
               testimonials.map((t, i) => (
                 <motion.blockquote
@@ -313,12 +335,24 @@ export function HomePage() {
               ))
             )}
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <a
+              href={googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brown-dark transition hover:underline dark:text-cream"
+            >
+              Google reviews
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </a>
+            <span className="hidden text-ink/30 sm:inline dark:text-sand/30" aria-hidden>
+              |
+            </span>
             <Link
               to="/testimonials"
-              className="text-sm font-medium text-brown dark:text-sand"
+              className="text-sm font-medium text-brown hover:underline dark:text-sand"
             >
-              Read all reviews →
+              Reviews on this site →
             </Link>
           </div>
         </section>
@@ -452,41 +486,66 @@ export function HomePage() {
             title="Visit us in Jaipur"
             subtitle="We are in Shyam Nagar — call or write before you visit if you would like to schedule a tour."
           />
-          <div className="mx-auto mt-8 flex max-w-xl flex-col gap-4 text-center text-ink dark:text-sand">
-            <p className="flex items-start justify-center gap-2 text-left text-base">
-              <MapPin className="mt-1 h-5 w-5 shrink-0 text-brown" />
-              <span>
-                {addressLines.map((line, i) => (
-                  <span key={`home-addr-${i}`}>
-                    {i > 0 && <br />}
-                    {line}
-                  </span>
-                ))}
-              </span>
-            </p>
-            <p className="flex flex-wrap items-center justify-center gap-2">
-              <a
-                href={`tel:${phoneTel}`}
-                className="inline-flex items-center gap-2 font-semibold text-brown-dark dark:text-cream"
-              >
-                <Phone className="h-5 w-5" />
-                {phoneDisplay}
-              </a>
-              <span className="text-ink/40 dark:text-sand/40">·</span>
-              <a
-                href={`mailto:${contactEmail}`}
-                className="inline-flex items-center gap-2 font-medium text-brown underline-offset-2 hover:underline dark:text-sand"
-              >
-                <Mail className="h-5 w-5" />
-                {contactEmail}
-              </a>
-            </p>
-            <Link
-              to="/contact"
-              className="mt-2 inline-flex justify-center rounded-full bg-brown px-6 py-2.5 text-sm font-medium text-cream transition hover:bg-brown-dark"
-            >
-              Contact & directions
-            </Link>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
+            <div className="flex flex-col gap-4 text-ink dark:text-sand">
+              <p className="flex items-start gap-2 text-base">
+                <MapPin className="mt-1 h-5 w-5 shrink-0 text-brown" />
+                <span>
+                  {addressLines.map((line, i) => (
+                    <span key={`home-addr-${i}`}>
+                      {i > 0 && <br />}
+                      {line}
+                    </span>
+                  ))}
+                </span>
+              </p>
+              <p className="flex flex-wrap items-center gap-2">
+                <a
+                  href={`tel:${phoneTel}`}
+                  className="inline-flex items-center gap-2 font-semibold text-brown-dark dark:text-cream"
+                >
+                  <Phone className="h-5 w-5" />
+                  {phoneDisplay}
+                </a>
+                <span className="text-ink/40 dark:text-sand/40">·</span>
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="inline-flex items-center gap-2 font-medium text-brown underline-offset-2 hover:underline dark:text-sand"
+                >
+                  <Mail className="h-5 w-5" />
+                  {contactEmail}
+                </a>
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={googleMapsOpenUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-brown/40 bg-sand/30 px-4 py-2 text-sm font-semibold text-brown-dark transition hover:bg-sand/50 dark:border-sand/30 dark:bg-brown-dark/30 dark:text-cream"
+                >
+                  Google Maps
+                  <ExternalLink className="h-4 w-4" aria-hidden />
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center rounded-full bg-brown px-5 py-2 text-sm font-medium text-cream transition hover:bg-brown-dark"
+                >
+                  Full contact page
+                </Link>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl ring-1 ring-sand/80 dark:ring-brown-dark/50">
+              <div className="aspect-[4/3] w-full sm:aspect-video lg:min-h-[240px]">
+                <iframe
+                  title="Google Map — institute location in Jaipur"
+                  src={mapEmbedUrl}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -496,17 +555,17 @@ export function HomePage() {
             Next step
           </p>
           <h2 className="mt-2 font-display text-3xl font-semibold tracking-display-tight md:text-4xl">
-            Start with a trial lesson
+            Book an appointment
           </h2>
           <p className="mx-auto mt-3 max-w-lg leading-relaxed text-sand/95">
-            Meet a teacher, see the studio, and discuss your goals — before you
-            commit to a term.
+            Request a time to visit, meet a teacher, or discuss programmes — we
+            will confirm by email.
           </p>
           <Link
             to="/booking"
             className="mt-8 inline-flex rounded-full bg-cream px-8 py-3 text-sm font-semibold text-ink shadow-card transition-colors duration-200 hover:bg-sand"
           >
-            Book a trial class
+            Book an appointment
           </Link>
         </section>
       </Container>

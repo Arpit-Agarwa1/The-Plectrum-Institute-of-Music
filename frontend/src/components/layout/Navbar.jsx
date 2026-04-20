@@ -130,7 +130,7 @@ function MobileMenuDrawer({ open, onClose }) {
                 onClick={onClose}
                 className="block rounded-xl bg-brown py-3.5 text-center text-sm font-semibold text-cream shadow-md transition hover:bg-brown-dark"
               >
-                Book a trial class
+                Book an appointment
               </Link>
               <div className="mt-4 flex items-center justify-between px-1">
                 <button
@@ -269,7 +269,7 @@ export function SiteNavigation() {
               to="/booking"
               className="hidden rounded-full bg-brown px-4 py-2.5 text-xs font-semibold text-cream shadow-md transition hover:bg-brown-dark hover:shadow-lg sm:inline-flex md:px-5 md:text-sm"
             >
-              Book a trial
+              Book appointment
             </Link>
 
             <button

@@ -9,7 +9,7 @@ export function WhatsAppButton() {
   if (!number) return null;
 
   const text = encodeURIComponent(
-    "Hi! I would like to know more about classes at Plectrum Institute."
+    "Hi! I would like to book an appointment / ask about classes at Plectrum Institute."
   );
   const href = `https://wa.me/${number}?text=${text}`;
 

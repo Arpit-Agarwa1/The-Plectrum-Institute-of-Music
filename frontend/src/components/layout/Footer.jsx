@@ -16,7 +16,7 @@ const footerLinks = [
   { to: "/about", label: "Our story" },
   { to: "/courses", label: "Courses" },
   { to: "/teachers", label: "Teachers" },
-  { to: "/booking", label: "Book a class" },
+  { to: "/booking", label: "Book an appointment" },
   { to: "/contact", label: "Contact & map" },
 ];
 

@@ -55,15 +55,16 @@ export function BookingPage() {
   return (
     <>
       <Helmet>
-        <title>Book a class | The Plectrum Institute of Music</title>
+        <title>Book an appointment | The Plectrum Institute of Music</title>
       </Helmet>
       <div className="border-b border-sand/60 bg-sand/30 py-14 dark:border-brown-dark/40 dark:bg-brown-dark/15">
         <Container>
           <h1 className="font-display text-4xl font-semibold text-brown-dark dark:text-cream">
-            Book a trial or class
+            Book an appointment
           </h1>
           <p className="mt-3 max-w-2xl text-ink/80 dark:text-sand/80">
-            Tell us a little about you — we’ll confirm by email.
+            We don’t offer trial lessons — request a visit or class time and we’ll
+            confirm by email.
           </p>
         </Container>
       </div>

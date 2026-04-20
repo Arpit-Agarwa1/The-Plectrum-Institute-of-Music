@@ -3,17 +3,15 @@ import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { Container } from "../../components/Container.jsx";
 import { SectionTitle } from "../../components/SectionTitle.jsx";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import {
   addressLines,
   phoneDisplay,
   phoneTel,
   email as contactEmail,
   mapEmbedUrl,
+  googleMapsOpenUrl,
 } from "../../config/siteInfo.js";
-
-const MAP_EMBED =
-  import.meta.env.VITE_MAP_EMBED_URL || mapEmbedUrl;
 
 export function ContactPage() {
   const [form, setForm] = useState({
@@ -89,16 +87,28 @@ export function ContactPage() {
                 </a>
               </li>
             </ul>
-            <div className="mt-10 aspect-video overflow-hidden rounded-2xl ring-1 ring-sand dark:ring-brown-dark">
+            <p className="mt-8 text-sm font-medium text-brown dark:text-sand">
+              Google Maps
+            </p>
+            <div className="mt-2 aspect-video overflow-hidden rounded-2xl ring-1 ring-sand dark:ring-brown-dark">
               <iframe
-                title="Map"
-                src={MAP_EMBED}
+                title="Map — The Plectrum Institute of Music, Jaipur"
+                src={mapEmbedUrl}
                 className="h-full w-full border-0"
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <a
+              href={googleMapsOpenUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brown transition hover:text-brown-dark dark:text-sand dark:hover:text-cream"
+            >
+              Open in Google Maps
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </a>
           </div>
           <div>
             <form

@@ -85,8 +85,8 @@ export function AboutPage() {
           <SectionTitle title="Facilities" />
           <p className="mx-auto max-w-3xl text-center text-ink/80 dark:text-sand/80">
             Multiple lesson rooms, a small recital hall, practice pods, and a
-            lending library of sheet music. Ask us for a tour when you book
-            your trial.
+            lending library of sheet music. Ask us for a tour when you book an
+            appointment.
           </p>
         </section>
       </Container>
