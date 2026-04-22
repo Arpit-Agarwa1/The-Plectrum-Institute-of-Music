@@ -2,13 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Set `class="dark"` on <html> before paint so Tailwind `dark:*` works (see ThemeContext). -->
+    <script>
+      (function () {
+        var KEY = "plectrum-theme";
+        var root = document.documentElement;
+        /** Default is dark; only "light" in localStorage forces light. */
+        var dark = true;
+        try {
+          var v = localStorage.getItem(KEY);
+          if (v === "light") dark = false;
+          else if (v === "dark") dark = true;
+        } catch (e) {}
+        if (dark) root.classList.add("dark");
+        else root.classList.remove("dark");
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/branding/logo-brown.png" />
+    <link rel="apple-touch-icon" href="/branding/logo-brown.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="The Plectrum Institute of Music — structured guitar, piano, and vocal lessons in Jaipur. Expert faculty, small groups, and performance opportunities."
     />
-    <meta name="theme-color" content="#F5F0E6" />
+    <meta name="theme-color" content="#2B1A12" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -21,12 +40,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <title>The Plectrum Institute of Music</title>
   </head>
-  <body class="bg-cream text-ink antialiased">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

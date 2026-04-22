@@ -30,8 +30,8 @@ if (process.env.NODE_ENV !== "test") {
   app.use(morgan("dev"));
 }
 
-// --- CORS: Vite can be on 5173, 5176, etc. — allow any local dev origin ---
-const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+// --- CORS: Vite can be on 5177, 5176, etc. — allow any local dev origin ---
+const clientUrl = process.env.CLIENT_URL || "http://localhost:5177";
 
 function isAllowedDevOrigin(origin) {
   if (!origin) return true;
@@ -50,7 +50,7 @@ app.use(
         }
         return callback(new Error("Not allowed by CORS"));
       }
-      // Development: any localhost / 127.0.0.1 port (Vite may use 5173, 5176, …)
+      // Development: any localhost / 127.0.0.1 port (Vite may use 5177, 5176, …)
       if (!origin || isAllowedDevOrigin(origin) || origin === clientUrl) {
         return callback(null, true);
       }

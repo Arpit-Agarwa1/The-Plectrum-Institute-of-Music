@@ -13,7 +13,7 @@ export function TeacherCard({ teacher, index = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.06 }}
-      className="rounded-2xl bg-cream p-4 text-center shadow-soft ring-1 ring-sand/80 dark:bg-brown-dark/25 dark:ring-brown-dark/50"
+      className="rounded-2xl bg-cream p-4 text-center shadow-soft ring-1 ring-sand/80 transition duration-200 ease-smooth hover:shadow-lg dark:bg-brown-dark/30 dark:shadow-card-dark dark:ring-brown-dark/50 dark:hover:shadow-soft-dark"
     >
       <div className="mx-auto h-32 w-32 overflow-hidden rounded-full ring-2 ring-sand dark:ring-brown">
         <img

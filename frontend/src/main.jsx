@@ -5,9 +5,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { ToasterThemed } from "./components/ToasterThemed.jsx";
 import App from "./App.jsx";
 import { ErrorBoundary } from "./components/ErrorBoundary.jsx";
 import "./styles/globals.css";
@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <ErrorBoundary>
               <App />
             </ErrorBoundary>
-            <Toaster position="bottom-center" />
+            <ToasterThemed />
           </AuthProvider>
         </ThemeProvider>
       </BrowserRouter>

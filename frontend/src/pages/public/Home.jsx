@@ -115,10 +115,10 @@ export function HomePage() {
             }
             className="max-w-2xl"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-sand/95">
+            <p className="text-eyebrow font-semibold uppercase tracking-eyebrow text-sand/95">
               {instituteName}
             </p>
-            <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.1] tracking-display-tight md:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.1] tracking-display-tight md:text-5xl lg:text-hero">
               Serious instruction. A welcoming studio.
             </h1>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-sand/95 md:text-lg">
@@ -149,7 +149,7 @@ export function HomePage() {
         {/* About */}
         <section className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-brown dark:text-sand/90">
+            <p className="text-eyebrow font-semibold uppercase tracking-eyebrow text-brown dark:text-sand/90">
               About us
             </p>
             <h2 className="mt-2 font-display text-3xl font-semibold tracking-display-tight text-brown-dark dark:text-sand md:text-4xl">
@@ -551,7 +551,7 @@ export function HomePage() {
 
         {/* CTA */}
         <section className="mt-24 rounded-3xl bg-gradient-to-br from-brown to-brown-dark px-8 py-16 text-center text-cream shadow-card">
-          <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-sand/90">
+          <p className="text-eyebrow font-semibold uppercase tracking-eyebrow text-sand/90">
             Next step
           </p>
           <h2 className="mt-2 font-display text-3xl font-semibold tracking-display-tight md:text-4xl">

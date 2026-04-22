@@ -14,7 +14,7 @@ export function CourseCard({ course, index = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="group flex flex-col overflow-hidden rounded-2xl bg-cream shadow-soft ring-1 ring-sand/80 transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brown dark:bg-brown-dark/30 dark:ring-brown-dark/50 dark:focus-within:ring-sand"
+      className="group flex flex-col overflow-hidden rounded-2xl bg-cream shadow-soft ring-1 ring-sand/80 transition duration-200 ease-smooth hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brown dark:bg-brown-dark/35 dark:shadow-card-dark dark:ring-brown-dark/45 dark:focus-within:ring-sand dark:hover:shadow-soft-dark"
     >
       <div className="aspect-[4/3] overflow-hidden">
         <img

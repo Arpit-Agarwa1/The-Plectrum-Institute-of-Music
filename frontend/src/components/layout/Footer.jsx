@@ -11,6 +11,8 @@ import {
   instituteName,
   tagline,
 } from "../../config/siteInfo.js";
+import { BrandingLogo } from "../BrandingLogo.jsx";
+import { InstituteLockup } from "../InstituteLockup.jsx";
 
 const footerLinks = [
   { to: "/about", label: "Our story" },
@@ -53,7 +55,18 @@ export function Footer() {
       {/* Top band — dark, full-bleed within content column */}
       <div className="bg-brown-dark px-4 py-14 text-cream sm:px-8 md:px-10 lg:px-14">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-sand/80">
+          <div className="mb-6 flex flex-col items-center justify-center gap-2 text-center sm:gap-3">
+            <BrandingLogo
+              variant="onDarkBar"
+              size="onDarkBar"
+              decorative
+              className="mx-auto"
+            />
+            <p className="max-w-md font-display text-lg font-semibold leading-snug text-cream sm:text-xl">
+              {instituteName}
+            </p>
+          </div>
+          <p className="text-eyebrow font-semibold uppercase tracking-eyebrow text-sand/80">
             Stay in touch
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-display-tight md:text-4xl">
@@ -93,10 +106,8 @@ export function Footer() {
       <div className="border-x border-sand/60 bg-sand/30 px-4 py-12 dark:border-brown-dark/40 dark:bg-brown-dark/15 sm:px-8 md:px-10 lg:px-14">
         <div className="mx-auto flex max-w-5xl flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <div className="max-w-xl">
-            <p className="font-display text-2xl font-semibold leading-snug text-brown-dark dark:text-cream md:text-3xl">
-              {instituteName}
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-ink/75 dark:text-sand/80">
+            <InstituteLockup layout="footer" className="mb-4" />
+            <p className="text-sm leading-relaxed text-ink/75 dark:text-sand/80">
               {tagline}
             </p>
           </div>
@@ -122,7 +133,7 @@ export function Footer() {
       <div className="border border-t-0 border-sand/60 bg-cream px-4 py-8 dark:border-brown-dark/40 dark:bg-ink/80 sm:px-8 md:px-10 lg:px-14">
         <div className="mx-auto flex max-w-5xl flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-brown dark:text-sand/90">
+            <p className="text-eyebrow font-semibold uppercase tracking-eyebrow text-brown dark:text-sand/90">
               Visit
             </p>
             <address className="mt-3 not-italic text-sm leading-relaxed text-ink/85 dark:text-sand/85">

@@ -21,7 +21,7 @@ npm run install:all
 npm run dev
 ```
 
-Then open **http://localhost:5173** (or the URL Vite prints). The API is proxied to the backend — keep `VITE_BACKEND_ORIGIN` in `frontend/.env` equal to `http://localhost:<PORT>` where the API runs (`PORT` in `backend/.env`).
+Then open **http://localhost:5177** (or the URL Vite prints). The API is proxied to the backend — keep `VITE_BACKEND_ORIGIN` in `frontend/.env` equal to `http://localhost:<PORT>` where the API runs (`PORT` in `backend/.env`).
 
 ---
 
@@ -71,7 +71,7 @@ npm run dev
 
 This starts the API (`npm run start` in `backend/`) and Vite (`npm run dev` in `frontend/`) together.
 
-Open the URL Vite prints (usually `http://localhost:5173`).
+Open the URL Vite prints (usually `http://localhost:5177`).
 
 ## Learn the code (reading order)
 

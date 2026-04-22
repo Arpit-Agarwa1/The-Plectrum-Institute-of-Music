@@ -2,37 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Small global helpers — beginners: tweak colors here to see site-wide changes */
+/**
+ * Global base — body follows html.dark (see ThemeContext). Improves form controls
+ * and scrollbars in each color scheme.
+ */
 @layer base {
   html {
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  html:not(.dark) {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
   }
+
+  /* Default 15px + sm 16px — not via @apply: extended `text-*` tokens are unreliable in @apply */
   body {
-    @apply text-[15px] leading-relaxed sm:text-base;
+    @apply min-h-dvh min-h-screen font-sans bg-cream leading-relaxed text-ink antialiased transition-[background-color,color] duration-[320ms] ease-out;
+    font-size: 0.9375rem;
   }
+  @media (min-width: 640px) {
+    body {
+      @apply text-base;
+    }
+  }
+  /* Dark: avoid @apply for variant+palette — PostCSS can’t resolve `dark:bg-night` in @apply */
+  html.dark body {
+    background-color: #18100c;
+    color: rgb(232 220 203 / 0.92);
+  }
+
   ::selection {
-    background-color: rgba(139, 94, 60, 0.25);
+    background-color: rgba(139, 94, 60, 0.28);
   }
   .dark ::selection {
-    background-color: rgba(232, 220, 203, 0.25);
+    background-color: rgba(232, 220, 203, 0.22);
   }
-  /* Consistent focus rings for keyboard users */
+
   :where(a, button, input, textarea, select):focus-visible {
     @apply outline outline-2 outline-offset-2 outline-brown;
   }
   .dark :where(a, button, input, textarea, select):focus-visible {
     @apply outline-sand;
   }
+
+  /* Unstyled / prose links only — classed <Link> components keep their own look */
+  main a[href]:not([class]) {
+    @apply text-brown underline decoration-brown/30 underline-offset-2 transition-colors duration-200 hover:decoration-brown;
+  }
+  .dark main a[href]:not([class]) {
+    @apply text-sand/90 decoration-sand/30 hover:decoration-sand/80;
+  }
+}
+
+@layer utilities {
+  /* WebKit scrollbars — match warm light / dark surfaces */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 94, 60, 0.35) rgba(232, 220, 203, 0.4);
+  }
+  .dark * {
+    scrollbar-color: rgba(232, 220, 203, 0.2) rgba(24, 16, 12, 0.8);
+  }
 }
 
 @layer components {
-  /** Skip to main content — first focusable for keyboard / screen reader users */
   .skip-link {
-    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream shadow-card transition-transform duration-200 focus:translate-y-0 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-cream;
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream shadow-card transition-transform duration-200 ease-out focus:translate-y-0 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-cream;
   }
 }

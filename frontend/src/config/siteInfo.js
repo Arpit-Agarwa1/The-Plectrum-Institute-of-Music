@@ -24,6 +24,16 @@ export const email = "hello@plectruminstitute.music";
 /** Institute legal / marketing name */
 export const instituteName = "The Plectrum Institute of Music";
 
+/** Official marks in `public/branding/`. Use PNGs with **transparent** backgrounds for a clean “extracted” look on the site. */
+export const brandLogoBrown = "/branding/logo-brown.png";
+export const brandLogoCream = "/branding/logo-cream.png";
+
+/**
+ * `alt` for logo `img` / `aria-label` on the mark.
+ */
+export const brandLogoAlt =
+  "The Plectrum Institute of Music | Studio — stylized P and musical mark";
+
 /**
  * Short brand for tight layouts (mobile nav, favicon text).
  * Full `instituteName` is preferred in headers and legal lines.

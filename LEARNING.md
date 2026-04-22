@@ -7,7 +7,7 @@ This document uses **simple words** to explain how the pieces fit together.
 - **Frontend (`frontend/`):** the website in the browser (buttons, pages, colors). Uses **React with `.jsx` files** (HTML-like syntax in JavaScript).
 - **Backend (`backend/`):** a small program that answers requests and talks to the database.
 
-They are two separate apps. In development they run on two ports (for example `5173` and `5000`).
+They are two separate apps. In development they run on two ports (for example `5177` and `5000`).
 
 ## Backend MVC (how the API code is organized)
 

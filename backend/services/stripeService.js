@@ -16,7 +16,7 @@ export async function createDepositCheckoutSession() {
     throw badRequest("Stripe is not configured");
   }
   const stripe = new Stripe(stripeSecret);
-  const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+  const clientUrl = process.env.CLIENT_URL || "http://localhost:5177";
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",

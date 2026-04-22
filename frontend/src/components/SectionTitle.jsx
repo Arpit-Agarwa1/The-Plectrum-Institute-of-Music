@@ -14,10 +14,10 @@ export function SectionTitle({ title, subtitle, eyebrow }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="mb-12 text-center md:mb-14"
+      className="mb-12 text-center motion-reduce:transition-none md:mb-14"
     >
       {eyebrow ? (
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-eyebrow text-brown dark:text-sand/90">
+        <p className="mb-3 text-eyebrow font-semibold uppercase tracking-eyebrow text-brown dark:text-sand/90">
           {eyebrow}
         </p>
       ) : null}
