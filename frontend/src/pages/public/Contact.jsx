@@ -3,7 +3,14 @@ import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { Container } from "../../components/Container.jsx";
 import { SectionTitle } from "../../components/SectionTitle.jsx";
-import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  ExternalLink,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 import {
   addressLines,
   phoneDisplay,
@@ -11,6 +18,8 @@ import {
   email as contactEmail,
   mapEmbedUrl,
   googleMapsOpenUrl,
+  youtubeChannelUrl,
+  instagramUrl,
 } from "../../config/siteInfo.js";
 
 export function ContactPage() {
@@ -84,6 +93,30 @@ export function ContactPage() {
                   className="hover:text-brown"
                 >
                   {contactEmail}
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <Youtube className="mt-0.5 h-5 w-5 shrink-0 text-brown" />
+                <a
+                  href={youtubeChannelUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:text-brown"
+                >
+                  YouTube
+                  <ExternalLink className="h-3.5 w-3.5 opacity-80" aria-hidden />
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <Instagram className="mt-0.5 h-5 w-5 shrink-0 text-brown" />
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:text-brown"
+                >
+                  Instagram
+                  <ExternalLink className="h-3.5 w-3.5 opacity-80" aria-hidden />
                 </a>
               </li>
             </ul>

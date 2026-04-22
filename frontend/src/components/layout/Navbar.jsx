@@ -5,11 +5,24 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { clsx } from "clsx";
-import { Menu, X, Phone, LogIn, MapPin, Sun, Moon } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  MapPin,
+  Sun,
+  Moon,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth } from "../../context/AuthContext.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
-import { phoneDisplay, phoneTel } from "../../config/siteInfo.js";
+import {
+  phoneDisplay,
+  phoneTel,
+  youtubeChannelUrl,
+  instagramUrl,
+} from "../../config/siteInfo.js";
 import { InstituteLockup } from "../InstituteLockup.jsx";
 
 const navLinks = [
@@ -51,7 +64,6 @@ function desktopNavClass({ isActive, dark }) {
  * Slide-in panel for small screens.
  */
 function MobileMenuDrawer({ open, onClose }) {
-  const { user, logout } = useAuth();
   const { dark, toggle } = useTheme();
   const lockAp = dark ? "dark" : "light";
 
@@ -165,6 +177,42 @@ function MobileMenuDrawer({ open, onClose }) {
                 <Phone className="h-4 w-4" aria-hidden />
                 {phoneDisplay}
               </a>
+              <div
+                className="mt-3 flex gap-2"
+                role="group"
+                aria-label="Social media"
+              >
+                <a
+                  href={youtubeChannelUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                  className={clsx(
+                    "flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl text-sm font-medium transition-colors",
+                    dark
+                      ? "bg-white/10 text-cream hover:bg-white/15"
+                      : "bg-sand/60 text-brown-dark ring-1 ring-sand/80 hover:bg-sand/90"
+                  )}
+                >
+                  <Youtube className="h-4 w-4 shrink-0" aria-hidden />
+                  YouTube
+                </a>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                  className={clsx(
+                    "flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl text-sm font-medium transition-colors",
+                    dark
+                      ? "bg-white/10 text-cream hover:bg-white/15"
+                      : "bg-sand/60 text-brown-dark ring-1 ring-sand/80 hover:bg-sand/90"
+                  )}
+                >
+                  <Instagram className="h-4 w-4 shrink-0" aria-hidden />
+                  Instagram
+                </a>
+              </div>
             </div>
             <div
               className={clsx("border-t p-4", dark ? "border-white/10" : "border-sand/80")}
@@ -176,7 +224,7 @@ function MobileMenuDrawer({ open, onClose }) {
               >
                 Book an appointment
               </Link>
-              <div className="mt-4 flex items-center justify-between px-1">
+              <div className="mt-4 flex justify-end px-1">
                 <button
                   type="button"
                   onClick={toggle}
@@ -190,29 +238,6 @@ function MobileMenuDrawer({ open, onClose }) {
                 >
                   {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 </button>
-                {user ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      logout();
-                      onClose();
-                    }}
-                    className={clsx("text-sm font-medium", dark ? "text-sand" : "text-ink")}
-                  >
-                    Log out
-                  </button>
-                ) : (
-                  <Link
-                    to="/login"
-                    onClick={onClose}
-                    className={clsx(
-                      "text-sm font-semibold",
-                      dark ? "text-cream" : "text-brown"
-                    )}
-                  >
-                    Log in
-                  </Link>
-                )}
               </div>
             </div>
           </motion.aside>
@@ -224,7 +249,6 @@ function MobileMenuDrawer({ open, onClose }) {
 
 export function SiteNavigation() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user, logout } = useAuth();
   const { dark, toggle } = useTheme();
   const barAp = dark ? "dark" : "light";
 
@@ -304,6 +328,44 @@ export function SiteNavigation() {
               {phoneDisplay}
             </a>
 
+            <div
+              className={clsx(
+                "hidden items-center gap-0.5 sm:flex",
+                dark && "text-cream"
+              )}
+              role="group"
+              aria-label="Social media"
+            >
+              <a
+                href={youtubeChannelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx(
+                  "flex h-9 w-9 items-center justify-center rounded-full transition",
+                  dark
+                    ? "text-cream hover:bg-white/10"
+                    : "text-brown-dark hover:bg-sand/60"
+                )}
+                aria-label="YouTube"
+              >
+                <Youtube className="h-4 w-4" strokeWidth={2} aria-hidden />
+              </a>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx(
+                  "flex h-9 w-9 items-center justify-center rounded-full transition",
+                  dark
+                    ? "text-cream hover:bg-white/10"
+                    : "text-brown-dark hover:bg-sand/60"
+                )}
+                aria-label="Instagram"
+              >
+                <Instagram className="h-4 w-4" strokeWidth={2} aria-hidden />
+              </a>
+            </div>
+
             <button
               type="button"
               onClick={toggle}
@@ -317,41 +379,6 @@ export function SiteNavigation() {
             >
               {dark ? <Sun className="h-[1.35rem] w-[1.35rem]" /> : <Moon className="h-[1.35rem] w-[1.35rem]" />}
             </button>
-
-            {user ? (
-              <div className="hidden items-center gap-2 lg:flex">
-                <span
-                  className={clsx("max-w-[7rem] truncate text-xs", dark ? "text-sand/80" : "text-ink/65")}
-                >
-                  {user.name}
-                </span>
-                <button
-                  type="button"
-                  onClick={logout}
-                  className={clsx(
-                    "rounded-full px-3 py-1.5 text-xs font-medium ring-1 transition",
-                    dark
-                      ? "text-sand ring-white/20 hover:bg-white/10"
-                      : "text-brown-dark ring-sand/90 hover:bg-sand/50"
-                  )}
-                >
-                  Log out
-                </button>
-              </div>
-            ) : (
-              <Link
-                to="/login"
-                className={clsx(
-                  "hidden items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold ring-1 transition sm:inline-flex",
-                  dark
-                    ? "text-cream ring-white/20 hover:bg-white/10"
-                    : "text-brown-dark ring-sand/90 hover:bg-sand/50"
-                )}
-              >
-                <LogIn className="h-3.5 w-3.5" aria-hidden />
-                Log in
-              </Link>
-            )}
 
             <Link
               to="/booking"

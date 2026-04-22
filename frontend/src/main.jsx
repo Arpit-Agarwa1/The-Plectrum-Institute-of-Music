@@ -5,7 +5,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { AuthProvider } from "./context/AuthContext.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { ToasterThemed } from "./components/ToasterThemed.jsx";
 import App from "./App.jsx";
@@ -17,12 +16,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <HelmetProvider>
       <BrowserRouter>
         <ThemeProvider>
-          <AuthProvider>
-            <ErrorBoundary>
-              <App />
-            </ErrorBoundary>
-            <ToasterThemed />
-          </AuthProvider>
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
+          <ToasterThemed />
         </ThemeProvider>
       </BrowserRouter>
     </HelmetProvider>

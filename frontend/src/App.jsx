@@ -15,8 +15,6 @@ import { ContactPage } from "./pages/public/Contact.jsx";
 import { BookingPage } from "./pages/student/BookClass.jsx";
 import { BlogPage } from "./pages/public/Blog.jsx";
 import { BlogPostPage } from "./pages/public/BlogPost.jsx";
-import { LoginPage } from "./pages/auth/Login.jsx";
-import { RegisterPage } from "./pages/auth/Register.jsx";
 import { NotFoundPage } from "./pages/public/NotFound.jsx";
 
 export default function App() {
@@ -35,8 +33,6 @@ export default function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/blog" element={<BlogPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

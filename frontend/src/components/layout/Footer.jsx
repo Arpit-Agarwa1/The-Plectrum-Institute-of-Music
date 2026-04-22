@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Instagram, Youtube } from "lucide-react";
 import { api } from "../../services/api.js";
 import {
   addressLines,
@@ -10,6 +10,8 @@ import {
   email as contactEmail,
   instituteName,
   tagline,
+  youtubeChannelUrl,
+  instagramUrl,
 } from "../../config/siteInfo.js";
 import { BrandingLogo } from "../BrandingLogo.jsx";
 import { InstituteLockup } from "../InstituteLockup.jsx";
@@ -159,6 +161,34 @@ export function Footer() {
                 {contactEmail}
               </a>
             </p>
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
+              <a
+                href={youtubeChannelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-brown-dark transition hover:text-brown hover:underline dark:text-cream/95 dark:hover:text-cream"
+              >
+                <Youtube
+                  className="h-4 w-4 shrink-0"
+                  strokeWidth={2}
+                  aria-hidden
+                />
+                YouTube channel
+              </a>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-brown-dark transition hover:text-brown hover:underline dark:text-cream/95 dark:hover:text-cream"
+              >
+                <Instagram
+                  className="h-4 w-4 shrink-0"
+                  strokeWidth={2}
+                  aria-hidden
+                />
+                Instagram
+              </a>
+            </div>
           </div>
           <p className="text-xs leading-relaxed text-ink/50 md:max-w-xs md:text-right dark:text-sand/45">
             © {new Date().getFullYear()} {instituteName}. All rights reserved.

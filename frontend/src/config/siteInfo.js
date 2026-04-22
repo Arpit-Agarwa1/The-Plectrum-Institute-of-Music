@@ -75,6 +75,22 @@ export const googleMapsOpenUrl =
 export const googleReviewsUrl =
   import.meta.env.VITE_GOOGLE_REVIEWS_URL ||
   "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent(
-      "The Plectrum Institute of Music F-226 Jan Path Kishan Nagar Jaipur 302019"
+  encodeURIComponent(
+    "The Plectrum Institute of Music F-226 Jan Path Kishan Nagar Jaipur 302019"
     );
+
+/**
+ * Official YouTube — performances, lessons, and studio updates. Override in `.env` with `VITE_YOUTUBE_URL` if the handle changes.
+ * @type {string}
+ */
+export const youtubeChannelUrl =
+  import.meta.env.VITE_YOUTUBE_URL ||
+  "https://www.youtube.com/@theplectruminstitute1790";
+
+/**
+ * Official Instagram — news, performances, and studio life. Override with `VITE_INSTAGRAM_URL` in `.env`.
+ * @type {string}
+ */
+export const instagramUrl =
+  import.meta.env.VITE_INSTAGRAM_URL ||
+  "https://www.instagram.com/theplectruminstituteofmusic/";

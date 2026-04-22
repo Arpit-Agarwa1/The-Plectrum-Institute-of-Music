@@ -2,12 +2,14 @@
  * Top contact strip — address + phone; uses Container to align with nav and pages.
  */
 import { Link } from "react-router-dom";
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Instagram, Youtube } from "lucide-react";
 import { Container } from "./Container.jsx";
 import {
   addressLines,
   phoneDisplay,
   phoneTel,
+  youtubeChannelUrl,
+  instagramUrl,
 } from "../config/siteInfo.js";
 
 export function ContactStrip() {
@@ -33,6 +35,24 @@ export function ContactStrip() {
           >
             <Phone className="h-4 w-4 shrink-0" aria-hidden />
             <span className="tabular-nums">{phoneDisplay}</span>
+          </a>
+          <a
+            href={youtubeChannelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-brown transition-colors hover:text-brown-dark dark:text-sand/95 dark:hover:text-cream"
+          >
+            <Youtube className="h-4 w-4 shrink-0" aria-hidden />
+            YouTube
+          </a>
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-brown transition-colors hover:text-brown-dark dark:text-sand/95 dark:hover:text-cream"
+          >
+            <Instagram className="h-4 w-4 shrink-0" aria-hidden />
+            Instagram
           </a>
           <Link
             to="/contact"
