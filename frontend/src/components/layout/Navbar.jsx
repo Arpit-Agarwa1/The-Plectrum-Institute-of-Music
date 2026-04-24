@@ -285,7 +285,7 @@ export function SiteNavigation() {
           </Link>
 
           <nav
-            className="mx-1 hidden min-w-0 flex-1 items-center justify-between gap-1 overflow-x-auto lg:mx-3 lg:flex xl:mx-6 xl:gap-2 2xl:mx-10"
+            className="mx-1 hidden min-w-0 flex-1 items-center justify-between gap-1 overflow-x-auto overflow-y-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-3 lg:flex xl:mx-6 xl:gap-2 2xl:mx-10"
             aria-label="Primary"
           >
             {navLinks.map(({ to, label }) => (
